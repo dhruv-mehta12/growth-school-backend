@@ -3,7 +3,8 @@ const request = require('request-promise')
 const Bottleneck = require('bottleneck')
 // # SETTING MAX CONCURRENCY AS 5
 const limiter = new Bottleneck({
-    maxConcurrent: 5
+    maxConcurrent: 5,
+    minTimeout: 1000
   });
 
 const {QUESTION_URL, VOTES, VIEWS} = require('./selectors')
