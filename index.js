@@ -8,7 +8,7 @@ async function main() {
         const db = new Database()
         await db.connect()
         
-        for (let i = 1; i <= 100; i++) {
+        for (let i = 1; i <= 10000; i++) {
             scrape(i, db)
         }
         
