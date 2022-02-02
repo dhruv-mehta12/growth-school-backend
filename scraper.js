@@ -11,7 +11,7 @@ const {QUESTION_URL, VOTES, VIEWS} = require('./selectors')
 // Main scraping function
 async function scrape(pageNo, db){
 
-    console.log(`scraping page ${pageNo}`)
+    console.log(`Scraping page ${pageNo}`)
     try{
         const response = await limiter.schedule(() => request.get({
             uri: `https://stackoverflow.com/questions?tab=newest&page=${pageNo}`,
@@ -40,11 +40,11 @@ async function scrape(pageNo, db){
                 db.addToDatabase(add)
 
             } catch (e) {
-                // 
+                console.log(e)
             }
         }
     } catch(e){
-        //
+        console.log(e)
     }
 }
 

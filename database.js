@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const questionSchema = new mongoose.Schema({
     url: String,
     votes: Number,
-    views: Number
+    views: String
 })
 
 const Question = new mongoose.model('Question', questionSchema)
@@ -11,12 +11,12 @@ const Question = new mongoose.model('Question', questionSchema)
 class Database{
     
     async connect() {
-        await mongoose.connect('mongodb://localhost:27017/myapp')
+        await mongoose.connect('mongodb://localhost:27017/growthSchoolDB')
         console.log("Connected to MongoDB");
     }
 
     close() {
-        console.log("shutting down mongo");
+        console.log("Shutting down mongo");
         mongoose.disconnect();
     }
 
@@ -31,6 +31,10 @@ class Database{
 
     async getAllDocuments() {
         return await Question.find({})
+    }
+
+    async getCount() {
+        return await Question.count()
     }
 }
 
