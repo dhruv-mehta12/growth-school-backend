@@ -21,7 +21,6 @@ class Database{
     }
 
     async addToDatabase(args){
-
         Question.create({url: args.url, votes: args.numberOfVotes, views: args.numberOfViews}, (err) => {
             if (err) {
                 console.log(err.message);
